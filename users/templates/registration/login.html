@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 19px solid #a88482;
+            padding: 10px;
+            text-align: center;
+        }
+        .center-block {
+            margin: auto;
+            display: block;
+        }
+        
+
+        
+        
+    </style>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    
+    <form method="post">
+        <div class="center">
+            <h2>Login</h2>
+            {% csrf_token %}
+
+            Username:
+            
+
+            {{ form.username }}
+
+            Password:
+
+            {{ form.password }}
+
+
+
+
+            <input class="center-block" type="submit" value="Login">
+
+        </div>
+
+    </form>
+
+    <a href="{% url 'dashboard' %}">Back to dashboard</a>
+    {% endblock %}
+</body>
+</html>

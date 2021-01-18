@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\sportbook",
+    "\\users",
+    "\\users\\templates",
+    "\\users\\templates\\registration",
+    "\\users\\templates\\users"
+  ],
+  "SelectedNode": "\\users\\templates\\registration\\password_change_form.html",
+  "PreviewInSolutionExplorer": false
+}

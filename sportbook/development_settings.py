@@ -38,10 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tweets',
     'users',
-    # 'django_rq',
-    'portfolio',
+    'wagers',
 ]
 DEBUG = True
 SECURE_SSL_REDIRECT = False
@@ -58,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bex.urls'
+ROOT_URLCONF = 'sportbook.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bex.wsgi.application'
+WSGI_APPLICATION = 'sportbook.wsgi.application'
 # ASGI_APPLICATION = 'bex.routing.application'
 # CHANNEL_LAYERS = {
 #     'default': {
@@ -103,7 +101,7 @@ WSGI_APPLICATION = 'bex.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'bex-beta',
+        'NAME': 'sportbook-dev',
         'USER': 'thatcher',
         'PASSWORD': 'Pizza891',
         'HOST': 'localhost',
@@ -149,14 +147,16 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "dashboard"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "tweets/static"),
 ]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-AUTH_USER_MODEL = 'portfolio.User'
-LOGIN_REDIRECT_URL = "dashboard"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 DATA_UPLOAD_MAX_MEMORY_SIZE = None

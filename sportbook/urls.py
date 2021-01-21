@@ -21,4 +21,5 @@ from django.contrib import admin
 urlpatterns = [
     url('', include("users.urls")),
     url('admin/', admin.site.urls),
+     
 ]

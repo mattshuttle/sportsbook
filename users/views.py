@@ -1,20 +1,21 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from users.forms import CustomUserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 
 def dashboard(request):
     return render(request, "users/dashboard.html")
 
 def register(request):
-    if request.method == "GET":
-        return render(
-            request, "users/register.html",
-            {"form": CustomUserCreationForm}
-        )
-    elif request.method == "POST":
-        form = CustomUserCreationForm(request.POST)
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect(reverse("dashboard"))
+            return redirect('dashboard')
+    else:
+        form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})

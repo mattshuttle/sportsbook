@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 ]
 DEBUG = True
 SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False 
+CSRF_COOKIE_SECURE = False
 ALLOWED_HOSTS = ['*']
 
 MIDDLEWARE = [
@@ -100,9 +102,9 @@ WSGI_APPLICATION = 'sportbook.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'sportbook-dev',
-        'USER': 'thatcher',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sportbookdev',
+        'USER': 'postgres',
         'PASSWORD': 'Pizza891',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -150,7 +152,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = "dashboard"
-LOGOUT_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "login"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [

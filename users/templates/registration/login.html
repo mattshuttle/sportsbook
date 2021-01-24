@@ -162,11 +162,11 @@
                     {% csrf_token %}
                     <div class="group">
                         <label for="{{ form.username.id_for_label }}" class="label">Username</label>
-                        <input id="{{ form.username.id_for_label|default_if_none:"" }}" maxlength="100" name="{{ form.username.html_name }}" value="{{ form.username.value }}" type="text" class="input">
+                        <input id="{{ form.username.id_for_label }}" maxlength="100" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="{{ form.password.id_for_label }}" class="label">Password</label>
-                        <input id="{{ form.password.id_for_label }}" maxlength="100" name="{{ form.password.html_name }}" value="{{ form.password.value }}" type="password" class="input">
+                        <input id="{{ form.password.id_for_label }}" maxlength="100" name="{{ form.password.html_name }}" value="{{ form.password.value|default_if_none:"" }}" type="password" class="input">
                     </div>
 
                     <button>login</button>
